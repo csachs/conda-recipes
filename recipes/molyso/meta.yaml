@@ -1,6 +1,6 @@
 {% set name = "molyso" %}
-{% set version = "1.0.3" %}
-{% set sha256 = "76979c742fe473716271661760729258270f60731c6a60249f5993b7506fd92f" %}
+{% set version = "1.0.4" %}
+{% set sha256 = "1273f02cd98f79df747f6348d063443509f6f19b5bc1fb4a7ab60ec91bdb68d9" %}
 
 package:
   name: {{ name|lower }}
@@ -26,7 +26,7 @@ requirements:
     - matplotlib
     - nd2file
     - tifffile
-    - clint
+    - tqdm
     - opencv
 
 test:
