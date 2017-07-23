@@ -1,0 +1,51 @@
+{% set name = "molyso" %}
+{% set version = "1.0.3" %}
+{% set sha256 = "76979c742fe473716271661760729258270f60731c6a60249f5993b7506fd92f" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  noarch: python
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - numpy
+    - scipy
+    - matplotlib
+    - nd2file
+    - tifffile
+    - clint
+    - opencv
+
+test:
+  imports:
+    - molyso
+
+about:
+  home: https://github.com/modsim/molyso
+  license: BSD-2-Clause
+  license_family: BSD
+  summary: 'molyso - Mother Machine Analysis Software'
+  description: |
+    molyso - Mother Machine Analysis Software, see https://github.com/modsim/molyso for details.
+    Software described in paper https://dx.doi.org/10.1371/journal.pone.0163453
+
+  doc_url: https://molyso.readthedocs.io
+  dev_url: https://github.com/modsim/molyso
+
+extra:
+  recipe-maintainers:
+    - csachs
+

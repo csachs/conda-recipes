@@ -1,0 +1,45 @@
+{% set name = "mfisp-boxdetection" %}
+{% set version = "0.0.1.dev2" %}
+{% set sha256 = "6c0a1edd27f9ae0a5de64e3ca9b0b81ec62f884c879dc6c0f9e6c177000249bb" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 1
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  noarch: python
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+  run:
+    - python
+    - molyso
+
+test:
+  imports:
+    - mfisp_boxdetection
+
+about:
+  home: https://github.com/csachs/mfisp-boxdetection
+  license: BSD-2-Clause
+  license_family: BSD
+  summary: 'microfluidic image stack processing - boxdetection'
+  description: |
+    Single function to detect rectangular microfluidic growth structures in images, see example folder.
+  doc_url: https://github.com/csachs/mfisp-boxdetection
+  dev_url: https://github.com/csachs/mfisp-boxdetection
+
+extra:
+  recipe-maintainers:
+    - csachs
+

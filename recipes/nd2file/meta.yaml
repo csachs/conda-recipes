@@ -1,0 +1,44 @@
+{% set name = "nd2file" %}
+{% set version = "0.0.1.dev1" %}
+{% set sha256 = "8183c2e0203fa8ee5c5567116358c1e50bbd6ead3c9b088dd0473eeffcdcdbd6" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  noarch: python
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - numpy
+
+test:
+  imports:
+    - nd2file
+
+about:
+  home: https://github.com/csachs/nd2file
+  license: BSD-2-Clause
+  license_family: BSD
+  summary: 'Access Nikon NIS-Elements ND2 files'
+  description: |
+    A single-file pure Python .nd2 (Nikon NIS-Elements) file reader. This reader was developed initially as part of molyso, in times where support for .nd2 files was scarce. It has been mainly used for multi position multi channel images, nothing besides that is implemented or tested (the .nd2-format supports various additional dimensions for multidimensional datasets). The code is not really tidied up, but for our use cases it works (remarkably well). Two things are different compared to most other .nd2 readers I'm aware of: It uses memory-mapping, and has a heuristic fallback mode, in case damaged files (i.e. by crashed NIS instances) are opened, it can often guess where each frame would be, and speed up reading that way. Undocumented, experimental, subject to change without notice, no guarantees it opens any files. Licensed BSD.
+  doc_url: https://github.com/csachs/nd2file
+  dev_url: https://github.com/csachs/nd2file
+
+extra:
+  recipe-maintainers:
+    - csachs
+

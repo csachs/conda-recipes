@@ -1,0 +1,44 @@
+{% set name = "tunable" %}
+{% set version = "0.0.1.dev4" %}
+{% set sha256 = "1af90efe56c554243288b509a7e288a0281a75c2e2780582f1e4e27f89ee0256" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  noarch: python
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - pyasn1
+
+test:
+  imports:
+    - tunable
+
+about:
+  home: https://github.com/csachs/tunable
+  license: MIT
+  license_family: MIT
+  summary: 'A little Python library to set/manage tunable (configuration) values'
+  description: |
+    A tiny library to support tunable parameters (think: configuration values) as they often occur in scientific analyses. A main aspect differing from many other config approaches is, that the tunables are defined as classes where needed throughout the source, with default value, type, optional documentation etc., which makes later access fast, IDE-supported (code completion) and prevents running it with "missing defaults" or misspelled keys leading to runtime errors.
+  doc_url: https://github.com/csachs/tunable
+  dev_url: https://github.com/csachs/tunable
+
+extra:
+  recipe-maintainers:
+    - csachs
+
