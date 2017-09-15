@@ -1,0 +1,44 @@
+{% set name = "rioh" %}
+{% set version = "0.0.1" %}
+{% set sha256 = "cb757cf95238f3a6163943dfd1e816c5fcb9953866d275d57668ba797088244c" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  noarch: python
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - numpy
+
+test:
+  imports:
+    - rioh
+
+about:
+  home: https://github.com/csachs/rioh
+  license: BSD
+  license_family: BSD
+  summary: 'Raw Images Over HTTP - Microformat/Convention'
+  description: |
+    Raw Images Over HTTP - Microformat/Convention
+  doc_url: https://github.com/csachs/rioh
+  dev_url: https://github.com/csachs/rioh
+
+extra:
+  recipe-maintainers:
+    - csachs
+
