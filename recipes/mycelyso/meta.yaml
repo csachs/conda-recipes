@@ -1,6 +1,6 @@
 {% set name = "mycelyso" %}
-{% set version = "1.0.0rc1" %}
-{% set sha256 = "3bdacad89bea7ddffbaa5a7d432980a852347d531c648372d6f804c55b695b2f" %}
+{% set version = "1.0.0rc2" %}
+{% set sha256 = "90ac174601cf9d1185bc01a1e7f564b1c8d7a2c864fbe07520d6c68002f5ed77" %}
 
 package:
   name: {{ name|lower }}
