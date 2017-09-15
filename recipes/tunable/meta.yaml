@@ -23,6 +23,7 @@ requirements:
   run:
     - python
     - pyasn1
+    - pyyaml
 
 test:
   imports:
