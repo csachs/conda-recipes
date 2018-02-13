@@ -1,6 +1,6 @@
 {% set name = "mycelyso-inspector" %}
-{% set version = "1.0.0rc2" %}
-{% set sha256 = "991ff2031eb69856bbd6f0ccb86f1a4a5af152e70e16f8b47a2b370317911bf1" %}
+{% set version = "1.0.0rc3" %}
+{% set sha256 = "a212e1ba3740d1e91e0122e5229d37a15d08123248a38727968b8d1007dd1186" %}
 
 package:
   name: {{ name|lower }}
