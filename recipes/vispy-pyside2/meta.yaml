@@ -7,14 +7,14 @@ package:
   version: {{ version }}
 
 source:
-  git_rev: 053888ebb72e7bc6cead2a42fe36115afb48e1f6
-  git_url: https://github.com/hmaarrfk/vispy
+  git_rev: a48cc6abff743cfaaadf3c3c3c092d72e046dab5
+  git_url: https://github.com/vispy/vispy
   # fn: {{ name }}-{{ version }}.tar.gz
   # url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   # sha256: {{ sha256 }}
 
 build:
-  number: 2
+  number: 3
   script: python setup.py install --single-version-externally-managed --record record.txt
   noarch: python
 
