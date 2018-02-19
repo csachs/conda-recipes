@@ -10,6 +10,8 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
+  patches:
+    - remove-unnecessary-nine-dep.patch
 
 build:
   number: 0
@@ -26,12 +28,10 @@ requirements:
     - toolchain
     - numpy
     - cython
-    - nine
     - pytest-runner
   run:
     - python
     - numpy
-    - nine
     - python-utils
 
 test:
