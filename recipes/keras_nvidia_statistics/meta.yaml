@@ -1,0 +1,49 @@
+{% set name = "keras_nvidia_statistics" %}
+{% set version = "0.0.1dev1" %}
+{% set sha256 = "" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  git_rev: 4edf4a95d80d34c657585928d2b37eaab1ef6a9b
+  git_url: https://github.com/csachs/keras-nvidia-statistics
+  # fn: {{ name }}-{{ version }}.tar.gz
+  # url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  # sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  noarch: python
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+    - numpy
+    - keras
+    - py3nvml
+
+test:
+  imports:
+    - keras_nvidia_statistics
+
+about:
+  home: https://github.com/csachs/keras-nvidia-statistics
+  license: BSD 2-Clause
+  license_family: BSD
+  summary: 'Generate device statistics (such as utilization, temperature, …) via a keras callback'
+  description: |
+    Generate device statistics (such as utilization, temperature, …) via a keras callback
+    
+  doc_url: https://github.com/csachs/keras-nvidia-statistics
+  dev_url: https://github.com/csachs/keras-nvidia-statistics
+  
+extra:
+  recipe-maintainers:
+    - csachs
+

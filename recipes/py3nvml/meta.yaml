@@ -1,0 +1,45 @@
+{% set name = "py3nvml" %}
+{% set version = "0.1.0rc7" %}
+{% set sha256 = "b1d2334ca6b581454fa340e87a51578360f335966244a9b8e04bcfe454186207" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+
+build:
+  number: 0
+  script: python setup.py install --single-version-externally-managed --record record.txt
+  noarch: python
+
+requirements:
+  build:
+    - python
+    - setuptools
+  run:
+    - python
+
+test:
+  imports:
+    - py3nvml
+
+about:
+  home: https://github.com/fbcotter/py3nvml
+  license: BSD-3-Clause
+  license_family: BSD
+  license_file: LICENSE
+  summary: 'Python 3 Bindings for the NVIDIA Management Library'
+  description: |
+    Python 3 compatible bindings to the NVIDIA Management Library. Can be used to query the state of the GPUs on your system. This was ported from the NVIDIA provided python bindings nvidia-ml-py, which only supported python 2.
+    
+  doc_url: https://github.com/fbcotter/py3nvml
+  dev_url: https://github.com/fbcotter/py3nvml
+
+extra:
+  recipe-maintainers:
+    - csachs
