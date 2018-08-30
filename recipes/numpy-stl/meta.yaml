@@ -1,6 +1,6 @@
 {% set name = "numpy-stl" %}
-{% set version = "2.3.2" %}
-{% set sha256 = "628e044df1b9b88cb543368307c70d24f5d5b17a27588b7343e855c2a14f6e70" %}
+{% set version = "2.7.0" %}
+{% set sha256 = "ede911118cfee5a8fd4c341b418fc55bfcd70a557686febc4efb6693297e3aa2" %}
 
 package:
   name: {{ name|lower }}
@@ -10,12 +10,10 @@ source:
   fn: {{ name }}-{{ version }}.tar.gz
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
   sha256: {{ sha256 }}
-  patches:
-    - remove-unnecessary-nine-dep.patch
 
 build:
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   entry_points:
     - stl = stl.main:main
     - stl2ascii = stl.main:to_ascii
@@ -23,18 +21,17 @@ build:
 
 requirements:
   build:
-    - python
     - setuptools
-    - toolchain
-    - numpy 1.11.*  # [not (win32 and py36)]
-    - numpy 1.12.*  # [win32 and py36]
+    - {{ compiler('c') }}
     - cython
+  host:
+    - python
+    - pip
+    - numpy
     - pytest-runner
-    - enum34  # [py2k]
   run:
     - python
-    - numpy >=1.11  # [not (win32 and py36)]
-    - numpy >=1.12  # [win32 and py36]
+    - {{ pin_compatible('numpy') }}
     - python-utils
     - enum34  # [py2k]
 
