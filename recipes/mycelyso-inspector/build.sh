@@ -2,4 +2,4 @@
 cd mycelyso_inspector/static
 bower install
 cd ../..
-python setup.py install --single-version-externally-managed --record record.txt
+$PYTHON -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv

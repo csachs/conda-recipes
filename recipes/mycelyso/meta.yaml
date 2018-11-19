@@ -1,6 +1,6 @@
 {% set name = "mycelyso" %}
-{% set version = "1.0.0rc3" %}
-{% set sha256 = "ea947961d86e7ad07f96ba2fa04803f0d8385347750e7333a02f0feb8291b3a4" %}
+{% set version = "1.0.0rc4" %}
+{% set sha256 = "46de63dfeda424ce185d14fa90b6571a9c555c2a25aeed36e2dffd6da27941b8" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   noarch: python
 
 requirements:
