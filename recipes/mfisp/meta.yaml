@@ -1,0 +1,48 @@
+{% set name = "mfisp" %}
+{% set version = "0.0.1.dev1" %}
+{% set sha256 = "628defe563eaafe9184b9436452903c061bed261bbadcea7a4594cada4a2a381" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  fn: {{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  sha256: {{ sha256 }}
+
+build:
+  number: 1
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
+  noarch: python
+
+requirements:
+  build:
+    - python
+    - setuptools
+    - numpy
+  run:
+    - python
+    - molyso
+
+test:
+  imports:
+    - mfisp
+
+about:
+  home: https://github.com/csachs/mfisp
+  license: BSD-2-Clause
+  license_family: BSD
+  summary: 'microfluidic image stack processing'
+  description: |
+    Some miscellaneous tools helpful for working with image stacks (with microfluidic structures). Currently contains the following utilities:
+    mfisp.registration
+    mfisp.autorotate
+    mfisp.boxcrop
+  doc_url: https://github.com/csachs/mfisp
+  dev_url: https://github.com/csachs/mfisp
+
+extra:
+  recipe-maintainers:
+    - csachs
+
