@@ -1,6 +1,6 @@
 {% set name = "molyso" %}
-{% set version = "1.0.4" %}
-{% set sha256 = "1273f02cd98f79df747f6348d063443509f6f19b5bc1fb4a7ab60ec91bdb68d9" %}
+{% set version = "1.0.5" %}
+{% set sha256 = "02f9cdf1986a848e35b46d6e2ad64cc98c536bdb6fcaf36da6a0902df8a8c1ad" %}
 
 package:
   name: {{ name|lower }}
@@ -13,13 +13,13 @@ source:
 
 build:
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   noarch: python
 
 requirements:
   build:
     - python
-    - setuptools
+    - pip
   run:
     - numpy
     - scipy
