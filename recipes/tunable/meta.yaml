@@ -1,6 +1,6 @@
 {% set name = "tunable" %}
-{% set version = "0.0.1.dev4" %}
-{% set sha256 = "1af90efe56c554243288b509a7e288a0281a75c2e2780582f1e4e27f89ee0256" %}
+{% set version = "0.0.1.dev5" %}
+{% set sha256 = "a9fe28721179e221722e759b5379de7f7e052aadaf13ed13eb2983f73e068aea" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   noarch: python
 
 requirements:
@@ -42,4 +42,3 @@ about:
 extra:
   recipe-maintainers:
     - csachs
-
