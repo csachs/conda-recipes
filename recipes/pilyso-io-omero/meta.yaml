@@ -1,0 +1,47 @@
+{% set name = "pilyso-io-omero" %}
+{% set version = "0.0.1.dev1" %}
+{% set sha256 = "" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  git_rev: c810ac3af97067781bffaef39c2dedb260b52603
+  git_url: https://github.com/csachs/pilyso-io-omero
+  # fn: {{ name }}-{{ version }}.tar.gz
+  # url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  # sha256: {{ sha256 }}
+
+build:
+  number: 0
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
+  noarch: python
+
+requirements:
+  host:
+    - python
+    - pip
+  run:
+    - python
+    - pilyso-io
+    - omero-py
+
+test:
+  imports:
+    - pilyso_io_omero
+
+about:
+  home: https://github.com/csachs/pilyso-io-omero
+  license: GPL-2.0-or-later
+  license_family: GPL
+  summary: 'Python Image anaLYsis SOftware IO - omero reader'
+  description: |
+    Python Image anaLYsis SOftware IO - omero reader
+  doc_url: https://github.com/csachs/pilyso-io-omero
+  dev_url: https://github.com/csachs/pilyso-io-omero
+
+extra:
+  recipe-maintainers:
+    - csachs
+
