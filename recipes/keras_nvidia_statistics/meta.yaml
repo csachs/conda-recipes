@@ -1,5 +1,5 @@
 {% set name = "keras_nvidia_statistics" %}
-{% set version = "0.0.1dev2" %}
+{% set version = "0.0.1dev4" %}
 {% set sha256 = "" %}
 
 package:
@@ -7,7 +7,7 @@ package:
   version: {{ version }}
 
 source:
-  git_rev: 264f8879e853f011d8697f7ef63c4f3fbbdfc01e
+  git_rev: 02fca4807ca768cd6488fc4a9aca00abfd7aa2f4
   git_url: https://github.com/csachs/keras-nvidia-statistics
   # fn: {{ name }}-{{ version }}.tar.gz
   # url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
@@ -15,7 +15,7 @@ source:
 
 build:
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: "{{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv"
   noarch: python
 
 requirements:
@@ -25,7 +25,7 @@ requirements:
   run:
     - python
     - numpy
-    - keras
+    #- keras  # we remove it here to remain flexible in the way of installing keras (or in particular tensorflow)
     - py3nvml
 
 test:
