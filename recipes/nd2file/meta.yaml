@@ -1,6 +1,6 @@
 {% set name = "nd2file" %}
-{% set version = "0.0.1.dev1" %}
-{% set sha256 = "8183c2e0203fa8ee5c5567116358c1e50bbd6ead3c9b088dd0473eeffcdcdbd6" %}
+{% set version = "0.0.1.dev2" %}
+{% set sha256 = "41aaed93fd38864a8d016794f24f30cb1908c541ee0cc5f6b26dc72ad1675fbe" %}
 
 package:
   name: {{ name|lower }}
