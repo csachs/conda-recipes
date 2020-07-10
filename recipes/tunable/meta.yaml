@@ -1,6 +1,6 @@
 {% set name = "tunable" %}
-{% set version = "0.0.1.dev5" %}
-{% set sha256 = "a9fe28721179e221722e759b5379de7f7e052aadaf13ed13eb2983f73e068aea" %}
+{% set version = "0.0.1.dev6" %}
+{% set sha256 = "37402b48ad0597acab2b5cc9006a5400fd8f606ff5c530f164977c0a75fc7581" %}
 
 package:
   name: {{ name|lower }}
