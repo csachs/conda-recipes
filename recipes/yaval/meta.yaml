@@ -24,6 +24,7 @@ requirements:
     - python
     - numpy
     - matplotlib
+    - vispy
     - pyside2
 
 test:
