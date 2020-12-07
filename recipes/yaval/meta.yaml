@@ -1,6 +1,6 @@
 {% set name = "yaval" %}
-{% set version = "0.0.1.post1" %}
-{% set sha256 = "01268502ee76e472f0588d3ce77f6e1406eb99a9faabd4e16e18961cb5e2d39d" %}
+{% set version = "0.0.1.post2" %}
+{% set sha256 = "8870c04c0367aeea16ca72bbc5a1f43a0981bb4e96a75632dece9d65160d4145" %}
 
 package:
   name: {{ name|lower }}
@@ -13,7 +13,7 @@ source:
 
 build:
   number: 0
-  script: python setup.py install --single-version-externally-managed --record record.txt
+  script: {{ PYTHON }} -m pip install . --no-deps --ignore-installed --no-cache-dir -vvv
   noarch: python
 
 requirements:
@@ -24,7 +24,6 @@ requirements:
     - python
     - numpy
     - matplotlib
-    - vispy-pyside2
     - pyside2
 
 test:
