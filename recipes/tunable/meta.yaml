@@ -1,6 +1,6 @@
 {% set name = "tunable" %}
-{% set version = "0.0.1.dev6" %}
-{% set sha256 = "37402b48ad0597acab2b5cc9006a5400fd8f606ff5c530f164977c0a75fc7581" %}
+{% set version = "0.0.1.dev7" %}
+{% set sha256 = "6bab7d941f2bfcd331c471556bd1dc587f13050c9f0e8172f3b0b2b8acfe389b" %}
 
 package:
   name: {{ name|lower }}
@@ -20,6 +20,7 @@ requirements:
   build:
     - python
     - pip
+    - flit-core
   run:
     - python
     - pyasn1
